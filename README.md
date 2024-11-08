@@ -74,19 +74,42 @@ Here are a few example SQL queries used in the project:
    ORDER BY frequency DESC;
    ```
 
+Here are the setup instructions specifically for MySQL Workbench, including steps to import the `.csv` file.
+
+---
+
 ## Setup Instructions
 
-To set up the Layoffs database in MySQL:
+To set up and run the Layoffs Data Cleaning and EDA project through MySQL Workbench, follow these steps:
 
-1. **Install MySQL:** Ensure MySQL is installed on your system.
-2. **Create Database:** Use the `CREATE DATABASE` command to create a database for layoffs.
-3. **Execute SQL Scripts:** Run the provided SQL files for data cleaning and EDA using the following commands:
-   ```sql
-   mysql -u [username] -p layoffs < Data\ Cleaning\ SQL.sql
-   mysql -u [username] -p layoffs < Data\ EDA\ SQL.sql
-   ```
-4. **Load Dataset:** Import the `layoffs.csv` file into MySQL as the primary data source for the analysis.
-5. **Connect to Database:** Start querying the database for EDA once the setup is complete.
+### 1. Install MySQL and MySQL Workbench
+Ensure you have both **MySQL Server** and **MySQL Workbench** installed on your system. MySQL Workbench is a GUI that will allow you to manage the database, execute SQL scripts, and import the `.csv` file.
+
+### 2. Create a New Database in MySQL Workbench
+1. Open **MySQL Workbench** and connect to your MySQL server.
+2. In the **Navigator** panel, right-click on the **Schemas** area and select **Create Schema**.
+3. Name the schema (for example, `LayoffsDB`) and click **Apply**.
+4. Confirm by clicking **Apply** again to create the new database.
+
+### 3. Set Up the Database Structure
+1. Open a new SQL file in MySQL Workbench by navigating to **File > Open SQL Script** and select the `Data Cleaning SQL.sql` file provided for this project.
+2. Once loaded, select your newly created schema (e.g., `LayoffsDB`) in the **Schemas** panel to set it as the default database.
+3. Run the SQL script by clicking the **Execute** button (lightning icon) to set up the necessary table structure and constraints.
+
+### 4. Import the `.csv` File into the Layoffs Table
+1. Go to **Server > Data Import** in MySQL Workbench.
+2. Choose **Import from Self-Contained File** and select the `layoffs.csv` file.
+3. In the **Default Target Schema** dropdown, select your newly created database schema (e.g., `LayoffsDB`).
+4. Under **Import Options**, select the option to create a new table if necessary, or choose the `layoffs` table if it already exists in your schema.
+5. Start the import process by clicking **Start Import**.
+
+### 5. Run the EDA SQL Script
+1. Once the data is imported, open the `Data EDA SQL.sql` file by navigating to **File > Open SQL Script**.
+2. Ensure that your `LayoffsDB` schema is selected as the active database in the **Schemas** panel.
+3. Run the EDA SQL script by clicking the **Execute** button to analyze the data using predefined queries.
+
+### 6. Verify and Start Querying
+With the data structure set up and data imported, you can now run custom SQL queries in MySQL Workbench to further analyze the data or gain additional insights.
 
 ## Usage
 
